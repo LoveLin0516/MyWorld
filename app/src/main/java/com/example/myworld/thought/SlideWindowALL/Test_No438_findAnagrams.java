@@ -24,7 +24,7 @@ package com.example.myworld.aleetcode;
  * 起始索引等于 1 的子串是 "ba", 它是 "ab" 的异位词。
  * 起始索引等于 2 的子串是 "ab", 它是 "ab" 的异位词。
  *
- * https://leetcode.cn/problems/find-all-anagrams-in-a-string/description/?utm_source=LCUS&utm_medium=new_banner_click&utm_campaign=transfer2china&utm_content=title_main
+ * https://leetcode.cn/problems/find-all-anagrams-in-a-string/
  *
  */
 class Test_No438_findAnagrams {
@@ -32,4 +32,38 @@ class Test_No438_findAnagrams {
     public static void main(String[] args) {
 
     }
+
+    class Solution {
+        public List<Integer> findAnagrams(String s, String p) {
+            int sLen = s.length(), pLen = p.length();
+
+            if (sLen < pLen) {
+                return new ArrayList<Integer>();
+            }
+
+            List<Integer> ans = new ArrayList<Integer>();
+            int[] sCount = new int[26];
+            int[] pCount = new int[26];
+            for (int i = 0; i < pLen; ++i) {
+                ++sCount[s.charAt(i) - 'a'];
+                ++pCount[p.charAt(i) - 'a'];
+            }
+
+            if (Arrays.equals(sCount, pCount)) {
+                ans.add(0);
+            }
+
+            for (int i = 0; i < sLen - pLen; ++i) {
+                --sCount[s.charAt(i) - 'a'];
+                ++sCount[s.charAt(i + pLen) - 'a'];
+
+                if (Arrays.equals(sCount, pCount)) {
+                    ans.add(i + 1);
+                }
+            }
+
+            return ans;
+        }
+    }
+
 }

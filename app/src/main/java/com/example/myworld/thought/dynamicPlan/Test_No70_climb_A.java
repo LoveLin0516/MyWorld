@@ -34,4 +34,36 @@ class Test_No70_climb {
     public static void main(String[] args) {
 
     }
+
+    //见斐波那契数列
+
+    public int climbStairs2(int n) {
+        if(n==1){
+            return 1;
+        }else if(n==2){
+            return 2;
+        } else{
+            return climbStairs(n-2)+climbStairs(n-1);
+        }
+    }
+
+    public int climbStairs(int n) {
+        if (n == 1) {
+            return 1;
+        } else if (n == 2) {
+            return 2;
+        } else {
+            int a = 1;
+            int b = 2;
+            int c = 0;
+            int index = 0;
+            while (index < n) { //这个判断条件待定，不一定准确
+                c = a+b;
+                a=b;
+                b=c;
+                index++;
+            }
+            return c;
+        }
+    }
 }

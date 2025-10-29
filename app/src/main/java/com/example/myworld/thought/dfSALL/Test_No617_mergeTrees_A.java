@@ -26,6 +26,8 @@ package com.example.myworld.aleetcode;
  * 输入：root1 = [1], root2 = [1,2]
  * 输出：[2,2]
  *
+ * https://leetcode.cn/problems/merge-two-binary-trees/
+ *
  *
  */
 class Test_No617_mergeTrees {

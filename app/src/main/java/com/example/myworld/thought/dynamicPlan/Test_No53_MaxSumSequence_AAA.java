@@ -60,6 +60,22 @@ class Test_No53_MaxSumSequence_AAA {
         System.out.println("result----->" + result);
     }
 
+    /**
+     *
+     * 自己写的
+     */
+    public int maxSubArray2(int[] nums) {
+        int result = nums[0];
+        int temp = 0;
+        for (int i = 0; i < nums.length; i++) {
+            temp = temp + nums[i];
+            result = Math.max(result, temp);
+            if (temp < 0) {
+                temp = 0;
+            }
+        }
+    }
+
     static class Solution {
         public int maxSubArray(int[] nums) {
             if (nums == null || nums.length == 0) return 0;

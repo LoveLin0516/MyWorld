@@ -31,7 +31,6 @@ import java.util.Arrays;
  */
 
 
-
 class TestMaxRiseSequence {
     public static void main(String[] args) {
         int[] array = {10, 9, 2, 5, 3, 7, 101, 18};
@@ -43,6 +42,20 @@ class TestMaxRiseSequence {
         System.out.println("result---2-->" + getMaxLength(array2));
         System.out.println("result---3-->" + getMaxLength(array3));
 
+    }
+
+    public static int getMaxLength2(int[] array) {
+        int[] value= new int[array.length];
+        Arrays.fill(value,1);
+        int maxLength=1;
+        for (int i = 1; i < array.length; i++) {
+            for (int j = 0; j < i; j++) {
+                if(array[j]< array[i]){
+                    value[i]= Math.max(value[i], value[j]+1);
+                }
+            }
+            maxLength = Math.max(value[i], maxLength);
+        }
     }
 
     public static int getMaxLength(int[] array) {
@@ -63,8 +76,6 @@ class TestMaxRiseSequence {
         }
         return maxLength;
     }
-
-
 
 
 //    public static int getLength(int[] array) {

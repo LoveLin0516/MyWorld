@@ -28,6 +28,34 @@ class Test_No78_subsets {
 
     }
 
+    /**
+     * 自己写慢慢调的，验证通过，实际一样
+     */
+    class Solution2 {
+
+
+        public List<List<Integer>> subsets(int[] nums) {
+            List<List<Integer>> result = new ArrayList<>();
+            for(int k=0; k<=nums.length;k++){
+                subsets2(k, 0, result, new ArrayList<>(),nums);
+            }
+            return result;
+        }
+
+        public void subsets2(int k, int start, List<List<Integer>> result, List<Integer> path,int[] nums){
+            if(k==0){
+                result.add(new ArrayList<Integer>(path));
+                return;
+            }
+            for(int i=start;i<nums.length;i++){
+                path.add(nums[i]);
+                subsets2(k-1, i+1, result, path,nums);
+                path.remove(path.size()-1);
+            }
+
+        }
+    }
+
     class Solution {
         List<List<Integer>> result = new ArrayList<>();
         int n;

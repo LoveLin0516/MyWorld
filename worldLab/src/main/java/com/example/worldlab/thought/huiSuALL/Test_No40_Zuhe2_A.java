@@ -51,6 +51,43 @@ class Test_No40_Zuhe2 {
     }
 
     /**
+     * 自己摸索着写，调通的
+     */
+    class Solution2 {
+        public List<List<Integer>> combinationSum2(int[] candidates, int target) {
+            List<List<Integer>> result = new ArrayList<>();
+            List<Integer> path = new ArrayList<>();
+            Arrays.sort(candidates);
+            doSth(0, result,path, candidates,target);
+            return result;
+        }
+
+        public void doSth(int begin, List<List<Integer>>result, List<Integer> path,int[] candidates, int target){
+            if(target ==0){
+                result.add(new ArrayList<Integer>(path));
+                return;
+            }
+
+            for(int i=begin;i<candidates.length;i++){
+
+                if(candidates[i]>target){
+                    break;
+                }
+                if(i>begin&& candidates[i]==candidates[i-1]){
+                    continue;
+                }
+
+
+                path.add(candidates[i]);
+                doSth(i+1, result,path, candidates,target-candidates[i]);
+                path.remove(path.size()-1);
+            }
+        }
+
+
+    }
+
+    /**
      * https://leetcode-cn.com/problems/combination-sum-ii/solution/hui-su-suan-fa-jian-zhi-python-dai-ma-java-dai-m-3/
      */
     public class Solution {

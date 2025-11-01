@@ -34,6 +34,36 @@ class Test_No46_AllSeries_OOO {
 
     }
 
+    /**
+     * 自己摸索着写的
+     */
+    class Solution2 {
+        public List<List<Integer>> permute(int[] nums) {
+            List<List<Integer>> result = new ArrayList();
+            List<Integer> path = new ArrayList();
+            for(Integer integer: nums){
+                path.add(integer);
+            }
+            doSth(nums, result, path, 0);
+            return result;
+        }
+
+        public void doSth(int[] nums,List<List<Integer>> result,List<Integer> path,int begin ){
+            if(begin==nums.length){
+                result.add(new ArrayList<>(path));
+                return;
+            }
+            for(int i=begin;i< nums.length;i++){
+                Collections.swap(path, i, begin);
+                doSth(nums, result, path, begin+1);
+                Collections.swap(path, i, begin);
+
+            }
+
+        }
+    }
+
+
     class Solution {
         public List<List<Integer>> permute(int[] nums) {
             List<List<Integer>> res = new ArrayList<List<Integer>>();
@@ -52,6 +82,7 @@ class Test_No46_AllSeries_OOO {
             // 所有数都填完了
             if (first == n) {
                 res.add(new ArrayList<Integer>(output));
+//                return;
             }
             for (int i = first; i < n; i++) {
                 // 动态维护数组

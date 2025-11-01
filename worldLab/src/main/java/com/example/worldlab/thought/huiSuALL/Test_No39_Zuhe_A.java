@@ -55,44 +55,38 @@ class Test_No39_Zuhe_OOO {
     }
 
     /**
-     * https://leetcode-cn.com/problems/combination-sum/comments/
+     * 自己摸索着，调通了
      */
-//    static class Solution {
-//        public List<List<Integer>> combinationSum(int[] candidates, int target) {
-//            List<List<Integer>> res = new ArrayList<>();
-//            Arrays.sort(candidates);
-//            //System.out.println(candidates);
-//            backtrack(candidates, target, res, 0, new ArrayList<Integer>());
-//            return res;
-//        }
-//
-//        /**
-//         * 输入：candidates = [2,3,5], target = 8,
-//         * 所求解集为：
-//         * [
-//         *   [2,2,2,2],
-//         *   [2,3,3],
-//         *   [3,5]
-//         * ]
-//         **/
-//
-//        private void backtrack(int[] candidates, int target, List<List<Integer>> res, int i, ArrayList<Integer> tmp_list) {
-//            if (target < 0) return;
-//            if (target == 0) {
-//                res.add(new ArrayList<>(tmp_list));
-//                return;
-//            }
-//            for (int start = i; start < candidates.length; start++) {
-//                if (target < 0) break;
-//                //System.out.println(start);
-//                tmp_list.add(candidates[start]);
-//                //System.out.println(tmp_list);
-//                backtrack(candidates, target - candidates[start], res, start, tmp_list);
-//                tmp_list.remove(tmp_list.size() - 1);
-//            }
-//        }
-//    }
+    class Solution {
+        public List<List<Integer>> combinationSum(int[] candidates, int target) {
+            List<List<Integer>> result = new ArrayList<>();
+            List<Integer> path = new ArrayList<>();
+            Arrays.sort(candidates);
+            doSth(0, result,path, candidates,target);
+            return result;
+        }
 
+        public void doSth(int begin, List<List<Integer>>result, List<Integer> path,int[] candidates, int target){
+            if(target ==0){
+                result.add(new ArrayList<Integer>(path));
+                return;
+            }
+
+            for(int i=begin;i<candidates.length;i++){
+
+                if(candidates[i]>target){
+                    break;
+                }
+
+
+                path.add(candidates[i]);
+                doSth(i, result,path, candidates,target-candidates[i]);
+                path.remove(path.size()-1);
+            }
+        }
+
+
+    }
 
     /**
      * https://leetcode-cn.com/problems/combination-sum/solution/hui-su-suan-fa-jian-zhi-python-dai-ma-java-dai-m-2/

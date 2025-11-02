@@ -56,8 +56,17 @@ class TestMinKNum {
         }
 
         array[i] = aim;
-
         quickSort(array, left, i - 1);
         quickSort(array, i + 1, right);
+
+
+        // 找最小的k个数
+        if (i + 1 == k) {
+            return;
+        } else if(i+1>k) {
+            quickSort(array, left, i - 1);
+        } else if(i+1<k){
+            quickSort(array, i + 1, right);
+        }
     }
 }

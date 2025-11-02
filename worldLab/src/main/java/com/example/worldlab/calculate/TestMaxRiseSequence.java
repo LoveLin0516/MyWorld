@@ -45,6 +45,26 @@ class TestMaxRiseSequence {
 
     }
 
+    /**
+     *
+     * 自己手写
+     */
+    public static int getMaxLength3(int[] array) {
+        int[] dp= new int[array.length];
+
+        int maxLength=1;
+        Arrays.fill(dp, 1);
+        for (int j = 1; j < array.length; j++) {
+            for (int i = 0; i < j; i++) {
+                if (array[j]> array[i]){
+                    dp[j]= Math.max(dp[j], dp[i]+1);
+                }
+            }
+            maxLength= Math.max(maxLength,dp[j]);
+        }
+    }
+
+
     public static int getMaxLength(int[] array) {
         if (array == null || array.length == 0) {
             return 0;

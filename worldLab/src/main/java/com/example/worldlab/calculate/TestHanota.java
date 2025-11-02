@@ -60,30 +60,6 @@ class TestHanota {
         }
     }
 
-
-    /**
-     * 自己手写的，对比过OK
-     */
-    static class Solution2 {
-        public static void hanota(List<Integer> A, List<Integer> B, List<Integer> C) {
-            doSth(A,B,C,A.size());
-        }
-
-        public static void doSth(List<Integer> A, List<Integer> B,
-                                 List<Integer> C, int num){
-            if(num==1){
-                C.add(A.remove(A.size()-1));
-                return;
-            }
-            doSth(A,C,B,num-1);
-            C.add(A.remove(A.size()-1));
-
-            doSth(B,A,C,num-1);
-
-        }
-    }
-
-
     static class Solution {
         public static void hanota(List<Integer> A, List<Integer> B, List<Integer> C) {
             move(A.size(), A, B, C);

@@ -37,6 +37,10 @@ class TestTraverseTreeCengCi {
     }
 
 
+    /**
+     *
+     * 这个层次遍历的方式应该是错的
+     */
     /* 将二叉树序列化为字符串 */
     static String serialize(TreeNode root) {
         if (root == null) return "";

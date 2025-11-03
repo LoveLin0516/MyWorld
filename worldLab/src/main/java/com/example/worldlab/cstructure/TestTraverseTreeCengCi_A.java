@@ -36,10 +36,9 @@ class TestTraverseTreeCengCi {
         System.out.println("detraverse-node.right--->" + node.right);
     }
 
-
     /**
      *
-     * 这个层次遍历的方式应该是错的
+     * 这个遍历方式应该是错的
      */
     /* 将二叉树序列化为字符串 */
     static String serialize(TreeNode root) {

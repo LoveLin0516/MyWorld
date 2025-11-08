@@ -39,6 +39,10 @@ class TestTraverseTreeCengCi {
     /**
      *
      * 这个遍历方式应该是错的
+     * 这个遍历方式应该是错的
+     * 这个遍历方式应该是错的
+     * 这个遍历方式应该是错的
+     * 这个遍历方式应该是错的
      */
     /* 将二叉树序列化为字符串 */
     static String serialize(TreeNode root) {

@@ -47,6 +47,93 @@ class Test_No200_numIslands {
 
     }
 
+    /**
+     * 自己摸索着写的
+     * 深度优先搜索
+     * 基本运行正确
+     */
+
+    class Solution3 {
+        public int numIslands(char[][] grid) {
+            if (grid == null || grid.length == 0) {
+                return 0;
+            }
+            int m = grid.length;
+            int n = grid[0].length;
+            int num=0;
+            for(int i=0;i<m; i++){
+                for(int j=0;j<n;j++){
+                    if(grid[i][j]== '1'){
+                        ++num;
+                        dfs(grid,i,j);
+                    }
+                }
+            }
+            return num;
+
+        }
+
+        void dfs(char[][] grid, int i, int j){
+            int m = grid.length;
+            int n = grid[0].length;
+            if(i<0|| j<0 || i>=m|| j>=n || grid[i][j]=='0'){
+                return;
+            }
+            grid[i][j]='0';
+            dfs(grid,i-1,j);
+            dfs(grid,i+1,j);
+            dfs(grid,i,j-1);
+            dfs(grid,i,j+1);
+
+        }
+    }
+
+    /**
+     * 摸索着写的
+     *
+     * 广度优先搜索
+     * 不正确运行
+     */
+    class Solution4 {
+        public int numIslands(char[][] grid) {
+            if (grid == null || grid.length == 0) {
+                return 0;
+            }
+            int m = grid.length;
+            int n = grid[0].length;
+            int num=0;
+
+            for(int i=0;i<m; ++i){
+                for(int j=0;j<n;++j){
+                    if(grid[i][j]== '1'){
+                        ++num;
+                        grid[i][j]= '0'
+                        Queue<Integer> queue = new ArrayDeque<Integer>();
+                        int ni=i*n+j;
+                        queue.offer(ni);
+
+                        while(queue.size() > 0){
+                            int ni= queue.pool();
+                            int i= ni/n;
+                            int j=ni%n;
+                            if(i-1>=0 && && grid[i-1][j] == '1'){
+                                queue.add((i-1)*n+j)
+                                grid[i-1][j] = '0';
+                            }
+
+                        }
+
+                    }
+                }
+            }
+
+            return num;
+
+        }
+
+
+    }
+
 
     /**
      * 深度优先搜索

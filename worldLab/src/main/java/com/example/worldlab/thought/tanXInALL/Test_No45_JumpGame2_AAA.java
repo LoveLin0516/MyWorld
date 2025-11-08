@@ -46,6 +46,24 @@ class Test_No45_JumpGame2_AAA {
         System.out.println("result----->" + result);
     }
 
+    /**
+     * 自己随手写的
+     */
+    public int jump3(int[] nums) {
+        int currentPosition = nums.length-1;
+        int step=0;
+        while(currentPosition>0){
+            for(int i=0; i<currentPosition;i++){
+                if(nums[i]+i>= currentPosition){
+                    currentPosition= i;
+                    step++;
+                    break;
+                }
+            }
+        }
+
+    }
+
     static class Solution {
 
         /**

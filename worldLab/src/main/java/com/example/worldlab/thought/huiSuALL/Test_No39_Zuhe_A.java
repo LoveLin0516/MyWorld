@@ -66,6 +66,7 @@ class Test_No39_Zuhe_OOO {
             return result;
         }
 
+        // 2,3,6,7  -----  7
         public void doSth(int begin, List<List<Integer>>result, List<Integer> path,int[] candidates, int target){
             if(target ==0){
                 result.add(new ArrayList<Integer>(path));

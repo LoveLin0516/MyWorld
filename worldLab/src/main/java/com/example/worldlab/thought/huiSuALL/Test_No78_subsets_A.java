@@ -33,27 +33,33 @@ class Test_No78_subsets {
      */
     class Solution2 {
 
-
         public List<List<Integer>> subsets(int[] nums) {
+
             List<List<Integer>> result = new ArrayList<>();
-            for(int k=0; k<=nums.length;k++){
-                subsets2(k, 0, result, new ArrayList<>(),nums);
+            List<Integer> path = new ArrayList<>();
+            for(int k=0; k<= nums.length;k++){
+                dfs(k, 0, nums, result, path);
             }
             return result;
         }
 
-        public void subsets2(int k, int start, List<List<Integer>> result, List<Integer> path,int[] nums){
+        // 输入：nums = [1,2,3]
+        // 输出：[[],[1],[2],[3],[1,2],[1,3],[2,3],[1,2,3]]
+        public void dfs(int k,int begin , int[] nums,List<List<Integer>> result,
+                        public void dfs(int k,int begin , int[] nums,List<List<Integer>> result, List<Integer> path ){
             if(k==0){
-                result.add(new ArrayList<Integer>(path));
+                result.add(new ArrayList<>(path));
                 return;
             }
-            for(int i=start;i<nums.length;i++){
+            for(int i= begin;i<nums.length;i++){
                 path.add(nums[i]);
-                subsets2(k-1, i+1, result, path,nums);
+                dfs(k-1,i+1, nums, result,path);
                 path.remove(path.size()-1);
+
             }
 
         }
+
     }
 
     class Solution {

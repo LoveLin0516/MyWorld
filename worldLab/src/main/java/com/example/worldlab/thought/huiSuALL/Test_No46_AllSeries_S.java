@@ -53,6 +53,8 @@ class Test_No46_AllSeries_OOO {
                 result.add(new ArrayList<>(path));
                 return;
             }
+
+            //注意这里是begin+1, 唯一的区别
             for(int i=begin;i< nums.length;i++){
                 Collections.swap(path, i, begin);
                 doSth(nums, result, path, begin+1);

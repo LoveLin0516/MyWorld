@@ -44,11 +44,11 @@ class Test_No64_MinPathSum {
         value[0][0] = grid[0][0];
 
         for (int j = 1; j < n; j++) {
-            value[0][j] = grid[0][j - 1] + grid[0][j];
+            value[0][j] = value[0][j - 1] + grid[0][j];
         }
 
         for (int i = 1; i < m; i++) {
-            value[i][0] = grid[i - 1][0] + grid[i][0];
+            value[i][0] = value[i - 1][0] + grid[i][0];
         }
 
         for (int i = 1; i < m; i++) {
@@ -57,7 +57,7 @@ class Test_No64_MinPathSum {
             }
         }
 
-        return value[i-1][j-1];
+        return value[m-1][n-1];
 
 
     }

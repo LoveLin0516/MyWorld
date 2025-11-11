@@ -60,7 +60,7 @@ class Test_No70_offer10_Steps {
             int b = 2;
             int c = 0;
             int index = 0;
-            while (index < n) { //这个判断条件待定，不一定准确
+            while (index < n-2) {
                 c = a+b;
                 a=b;
                 b=c;

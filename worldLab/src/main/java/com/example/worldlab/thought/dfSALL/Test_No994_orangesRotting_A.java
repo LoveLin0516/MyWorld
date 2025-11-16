@@ -47,6 +47,49 @@ class Test_No994_orangesRotting {
 
     }
 
+    /**
+     * 自己手写的
+     */
+    public int orangesRotting(int[][] grid) {
+        int m = grid.length;
+        int n= grid[0].length;
+        Map<Integer,Integer> map = new HashMap<Integer, Integer>();
+        Queue queue = new LinkedList();
+
+        for(int i=0;i<m;i++){
+            for(int j=0;j<n;j++){
+                if(grid[i][j]==2){
+                    int ncode= i*n+j;
+                    queue.offer(ncode);
+                    map.put(ncode, map.getOrDefault(ncode,0)+1);
+
+                }
+            }
+        }
+        int ans;
+        while(queue.size()>0){
+            int nCode= queue.poll();
+            int ni= nCode/n;
+            int nj= nCode%n;
+
+            // ni-1 nj
+            if(ni-1>=0 && ni-1<m && nj>=0 && nj<n){
+                if(grid[ni-1][nj]==1){
+                    grid[ni-1][nj]==2;
+                    int ncode2= (ni-1)*n+nj;
+                    queue.offer(ncode2);
+                    map.put(ncode2, map.getOrDefault(ncode2,0)+1);
+                    ans = Math.max(ans, map.getOrDefault(ncode2,0));
+                }
+            }
+
+        }
+
+        return ans;
+    }
+
+
+
     class Solution {
         int[] dr = new int[]{-1, 0, 1, 0};
         int[] dc = new int[]{0, -1, 0, 1};

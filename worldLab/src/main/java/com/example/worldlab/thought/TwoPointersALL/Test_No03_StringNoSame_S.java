@@ -7,6 +7,9 @@ import java.util.Map;
 
 import kotlin.Suppress;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * Created by zhuqianglong@bigo.sg on 2021/3/30
  * Description:
@@ -40,8 +43,12 @@ import kotlin.Suppress;
  * <p>
  * 来源：力扣（LeetCode）
  * 链接：https://leetcode-cn.com/problems/longest-substring-without-repeating-characters
- *
+ * <p>
  * https://leetcode-cn.com/problems/longest-substring-without-repeating-characters/solution/hua-dong-chuang-kou-by-powcai/
+ *
+ *
+ * DeepSeek的解法
+ * https://chat.deepseek.com/a/chat/s/c184d657-8d78-4045-8902-868155e83bfe
  */
 class Test_No03_StringNoSame_O {
     public static void main(String[] args) {
@@ -49,6 +56,67 @@ class Test_No03_StringNoSame_O {
 //        String input = "asjrgapa";
         int length = new Solution().lengthOfLongestSubstring(input);
         System.out.println("length----->" + length);
+    }
+
+    /**
+     * 方法一：使用 HashSet
+     * String input = "pwwp123";
+     */
+    public class Solution {
+        public int lengthOfLongestSubstring(String s) {
+            if (s == null || s.length() == 0) {
+                return 0;
+            }
+
+            Set<Character> window = new HashSet<>();
+            int left = 0, right = 0;
+            int maxLength = 0;
+            int n = s.length();
+
+            while (right < n) {
+                char c = s.charAt(right);
+
+                // 如果字符不在窗口中，直接加入
+                if (!window.contains(c)) {
+                    window.add(c);
+                    maxLength = Math.max(maxLength, right - left + 1);
+                    right++;
+                } else {
+                    // 如果字符已存在，移动左指针直到移除重复字符
+                    window.remove(s.charAt(left));
+                    left++;
+                }
+            }
+
+            return maxLength;
+        }
+    }
+
+    /**
+     * https://leetcode-cn.com/problems/longest-substring-without-repeating-characters/solution/hua-dong-chuang-kou-by-powcai/
+     * <p>
+     * 选择这个作为最佳答案
+     * <p>
+     * 方法二：优化版本（使用 HashMap 记录索引）
+     */
+    String input = "pwwpew";
+
+    class Solution3 {
+        public int lengthOfLongestSubstring(String s) {
+            if (s.length() == 0) return 0;
+            HashMap<Character, Integer> map = new HashMap<Character, Integer>();
+            int max = 0;
+            int left = 0;
+            for (int i = 0; i < s.length(); i++) {
+                if (map.containsKey(s.charAt(i))) {
+                    left = Math.max(left, map.get(s.charAt(i)) + 1);
+                }
+                map.put(s.charAt(i), i);
+                max = Math.max(max, i - left + 1);
+            }
+            return max;
+
+        }
     }
 
 //    start =0;
@@ -83,30 +151,6 @@ class Test_No03_StringNoSame_O {
 //            return ans;
 //        }
 //    }
-
-    /**
-     * https://leetcode-cn.com/problems/longest-substring-without-repeating-characters/solution/hua-dong-chuang-kou-by-powcai/
-     *
-     * 选择这个作为最佳答案
-      */
-    String input = "asjrgapa";
-    class Solution3 {
-        public int lengthOfLongestSubstring(String s) {
-            if (s.length() == 0) return 0;
-            HashMap<Character, Integer> map = new HashMap<Character, Integer>();
-            int max = 0;
-            int left = 0;
-            for (int i = 0; i < s.length(); i++) {
-                if (map.containsKey(s.charAt(i))) {
-                    left = Math.max(left, map.get(s.charAt(i)) + 1);
-                }
-                map.put(s.charAt(i), i);
-                max = Math.max(max, i - left + 1);
-            }
-            return max;
-
-        }
-    }
 
 
     /**

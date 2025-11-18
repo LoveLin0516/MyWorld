@@ -42,6 +42,34 @@ class Test_No22_Kuohao_OOO {
         new Solution().generateParenthesis(2);
     }
 
+
+    /**
+     *
+     * 自己手写了下， 验证通过的
+     */
+    public List<String> generateParenthesis(int n) {
+        StringBuilder sb = new StringBuilder();
+        List<String> list = new ArrayList<String>();
+        return build(list, sb.toString(), n,n);
+    }
+
+    public List<String> build(List<String> list, String str, int left, int right){
+        if(left ==0 && right==0){
+            list.add(str);
+            return list;
+        }
+        if(left ==right){
+            build(list, str+"(", left-1, right);
+        } else if(left < right){
+            if(left>0){
+                build(list, str+"(", left-1, right);
+            }
+            build(list, str+")", left, right-1);
+        }
+        return list;
+    }
+
+
     /**
      *  评论区题解
      */

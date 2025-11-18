@@ -55,6 +55,8 @@ class Test_No46_AllSeries_OOO {
             }
 
             //注意这里是begin+1, 唯一的区别
+            //注意这里是begin+1, 唯一的区别
+            //注意这里是begin+1, 唯一的区别
             for(int i=begin;i< nums.length;i++){
                 Collections.swap(path, i, begin);
                 doSth(nums, result, path, begin+1);

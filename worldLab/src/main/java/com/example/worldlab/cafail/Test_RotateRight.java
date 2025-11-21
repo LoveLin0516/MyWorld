@@ -41,7 +41,7 @@ class Test_No {
 
 
     /**
-     * 自己实现的向左移动，验证通过
+     * 自己实现的向右移动，验证通过
      */
     class Solution {
         public ListNode rotateRight(ListNode head, int k) {

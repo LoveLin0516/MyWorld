@@ -1,4 +1,4 @@
-package com.example.worldlab.thread;
+package com.example.myworld.thread;
 
 import java.util.LinkedList;
 

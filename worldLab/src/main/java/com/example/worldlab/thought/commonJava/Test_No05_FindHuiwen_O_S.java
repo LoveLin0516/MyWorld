@@ -1,4 +1,4 @@
-package com.example.worldlab.aleetcode;
+package com.example.myworld.aleetcode;
 
 /**
  * Created by zhuqianglong@bigo.sg on 2021/3/30

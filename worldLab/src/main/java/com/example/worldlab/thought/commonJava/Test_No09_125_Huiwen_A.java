@@ -4,9 +4,11 @@ package com.example.myworld.aleetcode;
  * Created by zhuqianglong@bigo.sg on 2021/3/28
  * Description: 用递归的方式判断字符串是否是回文
  * <p>
+ *
+ * 125. 验证回文串
  * https://leetcode-cn.com/problems/valid-palindrome/
  */
-class Test_No09_Huiwen_S {
+class Test_No09_125_Huiwen_A {
 
     public static void main(String[] args) {
         String input = "3214abcddeddcba4123";

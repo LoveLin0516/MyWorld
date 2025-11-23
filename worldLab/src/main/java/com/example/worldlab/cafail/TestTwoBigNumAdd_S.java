@@ -47,6 +47,46 @@ class TestTwoBigNumAdd {
         System.out.println("result---->" + result);
     }
 
+    /**
+     * DeepSeek给的解法， 选这个作为最优解法
+     *
+     */
+    public static String addBigIntegers(String num1, String num2) {
+        // 确保num1是较长的字符串
+        if (num1.length() < num2.length()) {
+            return addBigIntegers(num2, num1);
+        }
+
+        StringBuilder result = new StringBuilder();
+        int carry = 0; // 进位
+        int len1 = num1.length();
+        int len2 = num2.length();
+
+        // 从最低位开始相加
+        for (int i = 0; i < len1; i++) {
+            // 获取num1当前位的数字
+            int digit1 = num1.charAt(len1 - 1 - i) - '0';
+
+            // 获取num2当前位的数字（如果num2较短，则视为0）
+            int digit2 = i < len2 ? num2.charAt(len2 - 1 - i) - '0' : 0;
+
+            // 当前位的和（包括进位）
+            int sum = digit1 + digit2 + carry;
+
+            // 计算当前位的结果和新的进位
+            result.append(sum % 10);
+            carry = sum / 10;
+        }
+
+        // 如果最后还有进位，添加到结果中
+        if (carry > 0) {
+            result.append(carry);
+        }
+
+        // 反转字符串得到正确顺序
+        return result.reverse().toString();
+    }
+
     public static String getTwoBigNumAdd(String num1, String num2) {
 
         char[] charNum1 = num1.toCharArray();

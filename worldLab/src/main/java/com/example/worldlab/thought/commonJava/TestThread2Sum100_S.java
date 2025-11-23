@@ -4,8 +4,10 @@ package com.example.myworld.thread;
  * Created by zhuqianglong@bigo.sg on 2020/7/22
  * Description: four Thread to calculate 100 numbers' count
  * 4个线程打印100个数字之和，并返回结果
+ *
+ * https://chat.deepseek.com/a/chat/s/872eb502-db4d-4356-8069-26e69b2be5b3
  */
-class TestThread2_S {
+class TestThread2Sum100_S {
 
     int testArray[] = {1, 2, 3};
 

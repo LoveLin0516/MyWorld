@@ -7,7 +7,7 @@ import java.util.ArrayList;
  * Description: 2 thread to print jishu and oushu
  * 2个线程 打印100个数中的奇数和偶数
  */
-class TestThread3_S {
+class TestThread3PrintNum_S {
 
     private static final ArrayList<Integer> dataList = new ArrayList<>();
     private static int index = 0;

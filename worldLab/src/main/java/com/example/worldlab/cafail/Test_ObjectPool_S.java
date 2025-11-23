@@ -6,7 +6,7 @@ package com.example.myworld.aleetcode;
  * <p>
  *  雷鸟创新一面
  */
-class Test_No {
+class Test_ObjectPool_S {
 
     public static void main(String[] args) {
         ObjectPool<StringBulder> pool = new ObjectPool<StringBulder>(

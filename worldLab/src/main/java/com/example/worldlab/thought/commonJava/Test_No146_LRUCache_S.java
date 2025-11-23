@@ -38,8 +38,10 @@ package com.example.myworld.aleetcode;
  * lRUCache.get(4);    // 返回 4
  *
  * https://leetcode.cn/problems/lru-cache/
+ *
+ * Shopee 一面
  */
-class Test_No146_LRUCache {
+class Test_No146_LRUCache_S {
 
     public static void main(String[] args) {
 

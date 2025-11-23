@@ -12,7 +12,7 @@ import java.util.function.Consumer;
  *
  * 大宇无限一面
  */
-class Test_No {
+class Test_EventManager_S {
 
     public static void main(String[] args) {
 

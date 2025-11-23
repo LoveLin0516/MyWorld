@@ -1,4 +1,6 @@
-package com.example.myworld.aleetcode;
+package com.example.worldlab.thought.linkdList;
+
+import com.example.myworld.aleetcode.ListNode;
 
 /**
  * Created by zhuqianglong@bigo.sg on 2021/3/30

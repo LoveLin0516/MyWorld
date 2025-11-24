@@ -25,7 +25,7 @@ package com.example.myworld.aleetcode;
  *
  *
  */
-class Test_No344_reverseString_O {
+class Test_No344_reverseString_A {
 
     public static void main(String[] args) {
 

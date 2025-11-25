@@ -41,6 +41,42 @@ class Test_RotateRight {
         }
     }
 
+    /**
+     * 自己实现的向右移动，验证通过222
+     */
+    class Solution222 {
+        public ListNode rotateRight(ListNode head, int k) {
+
+            int length=1;
+
+            ListNode last =head;
+            while(last.next!=null){
+                last= last.next;
+                length++;
+            }
+
+            k= k% length;
+            if(k==0){
+                return head;
+            }
+
+            ListNode curHead= head;
+            int i=0;
+            while(i< length-k-1){
+                curHead= curHead.next;
+                i++;
+            }
+
+            last.next = head;
+
+            ListNode newHead= curHead.next;
+            curHead.next=null;
+
+            return newHead;
+
+        }
+    }
+
 
     /**
      * 自己实现的向右移动，验证通过

@@ -53,7 +53,7 @@ import com.example.myworld.cstructure.bean.TreeNode;
  *
  * JD 一面面试题
  */
-class Test_No91_Decode {
+class Test_No91_Decode_S {
 
     public static void main(String[] args) {
 
@@ -83,7 +83,7 @@ class Test_No91_Decode {
      * "KJF" ，将消息分组为 (11, 10, 6)
      *
      */
-    public int numDecodings(String s) {
+    public int numDecodings2(String s) {
         final int length = s.length();
         if(length == 0) return 0;
         if(s.charAt(0) == '0') return 0;
@@ -122,7 +122,6 @@ class Test_No91_Decode {
         dp[1] = 1;
         for (int i = 2; i <= size; i++) {
             char lastChar = s.charAt(i-2), curChar = s.charAt(i-1);
-            int t = 0;
             if (lastChar == '1' || lastChar == '2' && curChar <= '6') {
                 dp[i] += dp[i-2];
             }

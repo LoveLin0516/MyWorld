@@ -25,7 +25,7 @@ import com.example.myworld.cstructure.bean.TreeNode;
  *
  * JD 一面面试题
  */
-class Test_No64_MinPathSum {
+class Test_No64_MinPathSum_A {
 
     public static void main(String[] args) {
 

@@ -1,5 +1,7 @@
 package com.example.myworld.aleetcode;
 
+import java.util.Queue;
+
 /**
  * Created by zhuqianglong@bigo.sg on 2021/3/30
  * Description:
@@ -9,9 +11,9 @@ package com.example.myworld.aleetcode;
 class Test_ObjectPool_S {
 
     public static void main(String[] args) {
-        ObjectPool<StringBulder> pool = new ObjectPool<StringBulder>(
+        ObjectPool<StringBuilder> pool = new ObjectPool<StringBuilder>(
                 () -> new StringBuilder(), (sb) -> {
-            sb.clear()
+            sb.clear();
         }, 100
         );
 

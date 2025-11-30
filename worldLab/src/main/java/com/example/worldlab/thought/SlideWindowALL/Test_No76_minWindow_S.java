@@ -1,5 +1,7 @@
 package com.example.myworld.aleetcode;
 
+import java.util.HashMap;
+
 /**
  * Created by zhuqianglong@bigo.sg on 2021/3/30
  * Description:
@@ -91,6 +93,50 @@ class Test_No76_minWindow {
                 }
             }
             return true;
+        }
+    }
+
+    /**
+     * 自己手写了下
+     */
+    class Solution2 {
+        public String minWindow(String s, String t) {
+            int left=0;
+            int right=0;
+            int length=0
+            HashMap<String,Integer> map =new HashMap();
+
+            //for循环
+            int minLength;
+            int ansLeft;
+            int ansright;
+
+            while(right< s.length){
+                if(!match() && right< s.length){
+                    String c= s.charAt(right);
+                    if(t.contains(c)){
+                        map.put(c, map.getOrDefault(c,0)+1);
+                    }
+                    right++;
+                }
+                while(match() && left<=right){
+                    if(right-left-1<minLength){
+                        minLength=right-left-1;
+                        ansLeft= left;
+                        ansRight=right;
+                    }
+
+                    String c= s.charAt(left);
+                    if(t.contains(c)){
+                        map.put(c, map.getOrDefault(c,0)-1);
+                    }
+                    left++;
+                }
+            }
+        }
+
+        public void match(){
+
         }
     }
 

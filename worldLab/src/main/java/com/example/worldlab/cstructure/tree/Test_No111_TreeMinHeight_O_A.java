@@ -44,29 +44,10 @@ class Test_No111_TreeMinHeight_A {
     }
 
     class Solution {
-        class Solution {
-            public int minDepth(TreeNode root) {
-                if (root == null) {
-                    return 0;
-                }
 
-                if (root.left == null && root.right == null) {
-                    return 1;
-                }
-
-                int min_depth = Integer.MAX_VALUE;
-                if (root.left != null) {
-                    min_depth = Math.min(minDepth(root.left), min_depth);
-                }
-                if (root.right != null) {
-                    min_depth = Math.min(minDepth(root.right), min_depth);
-                }
-
-                return min_depth + 1;
-            }
-        }
-
-
+        /**
+         * 用这个
+         */
         public int minDepth2(TreeNode root) {
             if (root == null) return 0;
             else if (root.left == null)
@@ -76,7 +57,6 @@ class Test_No111_TreeMinHeight_A {
             else
                 return Math.min(minDepth(root.left), minDepth(root.right)) + 1;
         }
-
 
         public int minDepth3(TreeNode root) {
             if (root == null) return 0;
@@ -107,6 +87,28 @@ class Test_No111_TreeMinHeight_A {
             return height;
 
 
+        }
+    }
+
+    class Solution2 {
+        public int minDepth(TreeNode root) {
+            if (root == null) {
+                return 0;
+            }
+
+            if (root.left == null && root.right == null) {
+                return 1;
+            }
+
+            int min_depth = Integer.MAX_VALUE;
+            if (root.left != null) {
+                min_depth = Math.min(minDepth(root.left), min_depth);
+            }
+            if (root.right != null) {
+                min_depth = Math.min(minDepth(root.right), min_depth);
+            }
+
+            return min_depth + 1;
         }
     }
 

@@ -61,7 +61,7 @@ class Test_No45_JumpGame2_AAA {
                 }
             }
         }
-
+        return step;
     }
 
     static class Solution {

@@ -1,6 +1,10 @@
 package com.example.myworld.aleetcode;
 
 import java.util.Queue;
+import java.util.concurrent.ConcurrentLinkedDeque;
+import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.function.Consumer;
+import java.util.function.Supplier;
 
 /**
  * Created by zhuqianglong@bigo.sg on 2021/3/30
@@ -8,7 +12,7 @@ import java.util.Queue;
  * <p>
  *  雷鸟创新一面
  */
-class Test_ObjectPool_S {
+class Test_No_ObjectPool_S {
 
     public static void main(String[] args) {
         ObjectPool<StringBuilder> pool = new ObjectPool<StringBuilder>(
@@ -23,7 +27,7 @@ class Test_ObjectPool_S {
     }
 
     public class ObjectPool<T> {
-        private Queue queue = new ConcurrentLinkdQueue();
+        private Queue queue = new ConcurrentLinkedQueue();
         int maxSize;
         private Supplier<T> supplier;
         private Consumer<T> consumer;
@@ -37,7 +41,7 @@ class Test_ObjectPool_S {
 
         public T getObject() {
             T object = null;
-            if (queue.size > 0) {
+            if (queue.size() > 0) {
                 object = queue.poll();
             } else {
                 object = supplier.get();
@@ -64,15 +68,16 @@ class Test_ObjectPool_S {
      *
      * 自己手写的
      */
-    public class ObjectPool<T> {
+    public static class ObjectPool2<T> {
 
         private Queue queue = new ConcurrentLinkedQueue<>();
 
         private Supplier<T> supplier;
 
         private int maxSize;
+        private Consumer<T> consumer;
 
-        Public ObjectPool(Supplier<T> supplier, int size, Consumer<T> consumer) {
+        public ObjectPool2(Supplier<T> supplier, int size, Consumer<T> consumer) {
 
             this.supplier = supplier;
 
@@ -102,10 +107,10 @@ class Test_ObjectPool_S {
             if (object != null && queue.size() < maxSize) {
 
                 if (consumer != null) {
-                    consumer.callback(object)
+                    consumer.callback(object);
                 }
 
-                queue.offer(object)
+                queue.offer(object);
             }
         }
 

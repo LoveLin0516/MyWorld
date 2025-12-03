@@ -1,8 +1,14 @@
-package com.example.myworld.aleetcode;
+package com.example.worldlab.cafail;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by zhuqianglong@bigo.sg on 2021/3/30
  * Description:
+ * <p>
+ * 146. LRU 缓存
+ *
  * <p>
  * <p>
  * 请你设计并实现一个满足  LRU (最近最少使用) 缓存 约束的数据结构。
@@ -33,8 +39,12 @@ package com.example.myworld.aleetcode;
  * lRUCache.get(1);    // 返回 -1 (未找到)
  * lRUCache.get(3);    // 返回 3
  * lRUCache.get(4);    // 返回 4
+ * <p>
+ * https://leetcode.cn/problems/lru-cache/
+ * <p>
+ * Shopee 一面
  */
-class Test_No146_LRUCache {
+class Test_No146_LRUCache_S {
 
     public static void main(String[] args) {
 
@@ -73,6 +83,19 @@ class Test_No146_LRUCache {
 
         }
 
+        public int get2(int key) {
+            DLinkedNode node = cache.get(key);
+            if (node == null) {
+                return -1;
+            } else {
+                int value = node.value;
+                removeNode(node);
+                addToHead(node);
+                return value;
+            }
+        }
+
+
         public int get(int key) {
             DLinkedNode node = cache.get(key);
             if (node == null) {
@@ -83,25 +106,52 @@ class Test_No146_LRUCache {
             }
         }
 
-        public void put(int key, int value) {
-            DLinkedNode node = cache.get(key);
-            if(node==null){
-                DLinkedNode newNode = new DLinkedNode(key,value);
-                cache.put(key, newNode);
-                addToHead(newNode);
+        public void put2(int key, int value) {
+            if (cache.containsKey(key)) {
+                DLinkedNode node = cache.get(key);
+                node.value = value;
+                removeNode(node);
+                addToHead(node);
+            } else {
+                DLinkedNode node = new DLinkedNode(key, value);
+                cache.put(key, node);
+                addToHead(node);
                 size++;
-                if(size>capacity){
+                if (size > capacity) {
                     DLinkedNode tail = removeTail();
                     size--;
                     cache.remove(tail.key);
                 }
-            }else{
-                node.value=value;
-                moveToHead(node);
             }
         }
 
-        public void addToHead(DLinkedNode node){
+        public void put(int key, int value) {
+            DLinkedNode node = cache.get(key);
+            if (node == null) {
+                DLinkedNode newNode = new DLinkedNode(key, value);
+                cache.put(key, newNode);
+                addToHead(newNode);
+                size++;
+                if (size > capacity) {
+                    DLinkedNode tail = removeTail();
+                    size--;
+                    cache.remove(tail.key);
+                }
+            } else {
+                node.value = value;
+                moveToHead(node);
+            }
+        }
+        public void addToHead2(DLinkedNode node) {
+            node.prev=head;
+            node.next=head.next;
+
+            head.next.prev=node;
+            head.next=node;
+        }
+
+
+        public void addToHead(DLinkedNode node) {
             node.prev = head;
             node.next = head.next;
             head.next.prev = node;
@@ -114,19 +164,33 @@ class Test_No146_LRUCache {
             // head.next.prev=node;
         }
 
-        public void removeNode(DLinkedNode node){
-            node.prev.next= node.next;
+        public void removeNode2(DLinkedNode node) {
+            node.prev.next=node.next;
             node.next.prev=node.prev;
+        }
+
+
+        public void removeNode(DLinkedNode node) {
+            node.prev.next = node.next;
+            node.next.prev = node.prev;
 
         }
 
-        public DLinkedNode removeTail(){
-            DLinkedNode trueTail= tail.prev;
+        public DLinkedNode removeTail2() {
+            DLinkedNode realTail = tail.prev;
+            removeNode2(realTail);
+            return realTail;
+        }
+
+
+
+        public DLinkedNode removeTail() {
+            DLinkedNode trueTail = tail.prev;
             removeNode(trueTail);
             return trueTail;
         }
 
-        public void moveToHead(DLinkedNode node){
+        public void moveToHead(DLinkedNode node) {
             removeNode(node);
             addToHead(node);
         }

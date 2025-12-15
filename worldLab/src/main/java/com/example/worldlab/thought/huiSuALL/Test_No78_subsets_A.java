@@ -45,8 +45,7 @@ class Test_No78_subsets {
 
         // 输入：nums = [1,2,3]
         // 输出：[[],[1],[2],[3],[1,2],[1,3],[2,3],[1,2,3]]
-        public void dfs(int k,int begin , int[] nums,List<List<Integer>> result,
-                        public void dfs(int k,int begin , int[] nums,List<List<Integer>> result, List<Integer> path ){
+        public void dfs(int k,int begin , int[] nums,List<List<Integer>> result, List<Integer> path ){
             if(k==0){
                 result.add(new ArrayList<>(path));
                 return;

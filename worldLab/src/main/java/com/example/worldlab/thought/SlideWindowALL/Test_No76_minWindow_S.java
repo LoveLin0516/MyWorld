@@ -120,8 +120,8 @@ class Test_No76_minWindow {
                     right++;
                 }
                 while(match() && left<=right){
-                    if(right-left-1<minLength){
-                        minLength=right-left-1;
+                    if(right-left+1<minLength){
+                        minLength=right-left+1;
                         ansLeft= left;
                         ansRight=right;
                     }

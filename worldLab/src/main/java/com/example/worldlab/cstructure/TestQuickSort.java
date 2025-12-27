@@ -77,7 +77,7 @@ class TestQuickSort {
 
         int i = l;
         int j = r;
-        int key = a[l];//选择第一个数为key
+        int key = a[i];//选择第一个数为key
 
         while (i < j) {
 

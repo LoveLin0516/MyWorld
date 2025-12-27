@@ -47,8 +47,29 @@ class Test_No56_MergeIntervals {
     //解释：区间 [1,3] 和 [2,6] 重叠, 将它们合并为 [1,6].
     //
 
-
     class Solution {
+
+        //自己随手写的
+        public int[][] merge2(int[][] intervals) {
+            List<int[]> result= new ArrayList<>();
+
+            for(int i=0; i< intervals.length; i++){
+                int left = intervals[i][0];
+                int right = intervals[i][1];
+
+
+                if(result.size()==0 || result.get(result.size()-1)[1]< left){
+                    result.add(intervals[i]);
+                }else{
+                    //注意，此时就不是add了，而是在原来的数据上面修改
+                    right= Math.max(right, result.get(result.size()-1)[1]);
+                    result.get(result.size()-1)[1]= right;
+                }
+            }
+            return result.toArray(new int[result.size()][]);
+        }
+
+
         public int[][] merge(int[][] intervals) {
             if (intervals == null || intervals.length == 0) return new int[0][2];
             if (intervals.length == 1) return intervals;

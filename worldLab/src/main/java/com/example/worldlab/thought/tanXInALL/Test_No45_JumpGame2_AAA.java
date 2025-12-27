@@ -49,20 +49,22 @@ class Test_No45_JumpGame2_AAA {
     /**
      * 自己随手写的
      */
-    public int jump3(int[] nums) {
+    public int jump4(int[] nums) {
+        int count=0;
         int currentPosition = nums.length-1;
-        int step=0;
         while(currentPosition>0){
             for(int i=0; i<currentPosition;i++){
-                if(nums[i]+i>= currentPosition){
-                    currentPosition= i;
-                    step++;
+                if(nums[i]+i>=currentPosition){
+                    currentPosition=i;
+                    count++;
                     break;
                 }
             }
         }
-        return step;
+        return count;
+
     }
+
 
     static class Solution {
 

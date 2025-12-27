@@ -46,9 +46,6 @@ class Test_No57_sumTarget_S {
      */
     public static List<List<Integer>> getResult(int target) {
 
-        int[] aa = new int[]{};
-        int[] bb = new int[10];
-
         List<List<Integer>> result = new ArrayList<List<Integer>>();
         for (int i = 1; i < target; i++) {
             int tempResult = 0;

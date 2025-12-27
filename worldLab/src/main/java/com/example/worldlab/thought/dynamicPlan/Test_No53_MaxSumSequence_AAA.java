@@ -74,6 +74,7 @@ class Test_No53_MaxSumSequence_AAA {
                 temp = 0;
             }
         }
+        return result;
     }
 
     static class Solution {

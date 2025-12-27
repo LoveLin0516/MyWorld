@@ -61,7 +61,7 @@ class Test_No62_uniquePaths {
         }
 
         for(int i=1;i<m; i++){
-            for(int j=1;i<n;j++){
+            for(int j=1;j<n;j++){
 
                 array[i][j]= array[i-1][j]+array[i][j-1];
             }

@@ -7,8 +7,12 @@ import com.example.myworld.aleetcode.ListNode;
  * Description:
  * <p>
  * 字节番茄一面
+ *
+ * 61. 旋转链表
+ *
+ * https://leetcode.cn/problems/rotate-list/
  */
-class Test_RotateRight {
+class Test_No61_RotateRight {
 
     public static void main(String[] args) {
 
@@ -43,6 +47,7 @@ class Test_RotateRight {
 
     /**
      * 自己实现的向右移动，验证通过222
+     * 优化版本，少一次遍历
      */
     class Solution222 {
         public ListNode rotateRight(ListNode head, int k) {
@@ -166,6 +171,9 @@ class Test_RotateRight {
         }
     }
 
+    /**
+     * 最早面试时的写法
+     */
     public void doSth() {
         ListNode head2 = head;
 

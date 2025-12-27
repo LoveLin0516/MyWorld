@@ -61,7 +61,7 @@ class Test_No994_orangesRotting {
                 if(grid[i][j]==2){
                     int ncode= i*n+j;
                     queue.offer(ncode);
-                    map.put(ncode, map.getOrDefault(ncode,0)+1);
+                    map.put(ncode, 0);
 
                 }
             }
@@ -78,7 +78,7 @@ class Test_No994_orangesRotting {
                     grid[ni-1][nj]==2;
                     int ncode2= (ni-1)*n+nj;
                     queue.offer(ncode2);
-                    map.put(ncode2, map.getOrDefault(ncode2,0)+1);
+                    map.put(ncode2, map.getOrDefault(nCode,0)+1);
                     ans = Math.max(ans, map.getOrDefault(ncode2,0));
                 }
             }

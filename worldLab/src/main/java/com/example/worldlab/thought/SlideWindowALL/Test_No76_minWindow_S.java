@@ -103,7 +103,7 @@ class Test_No76_minWindow {
         public String minWindow(String s, String t) {
             int left=0;
             int right=0;
-            int length=0
+            int length=0;
             HashMap<String,Integer> map =new HashMap();
 
             //for循环
